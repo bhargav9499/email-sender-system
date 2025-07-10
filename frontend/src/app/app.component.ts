@@ -13,17 +13,21 @@ export class AppComponent {
     email: '',
   };
   message = '';
+  loading = false;
 
   constructor(private http: HttpClient) {}
 
   onSubmit() {
+    this.loading = true;
     this.http.post<any>('http://localhost:3001/register', this.formData).subscribe({
       next: () => {
         this.message = 'Email sent successfully!';
         this.formData = { name: '', email: '' };
+        this.loading = false;
       },
       error: () => {
         this.message = 'Failed to send email.';
+        this.loading = false;
       },
     });
   }
