@@ -1,0 +1,15 @@
+<div style="text-align:center">
+  <h1>Welcome to the Email Sender System</h1>
+
+  <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required [(ngModel)]="formData.name" name="name" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required [(ngModel)]="formData.email" name="email" />
+
+    <button type="submit">Send Email</button>
+  </form>
+
+  <p *ngIf="message">{{ message }}</p>
+</div>
